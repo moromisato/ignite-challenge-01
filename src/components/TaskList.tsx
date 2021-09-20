@@ -44,6 +44,15 @@ export function TaskList() {
     setTasks(updatedTasks);
   }
 
+  function alternativeHandleToggleTaskCompletion(id: number) {
+    const updatedTasks = tasks.map(task => task.id === id ? {
+      ...task,
+      isComplete: !task.isComplete
+    }: task);
+
+    setTasks(updatedTasks)
+  }
+
   function handleRemoveTask(id: number) {
     setTasks(prev => prev.filter(task => task.id !== id))
   }
