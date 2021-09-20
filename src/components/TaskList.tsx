@@ -15,15 +15,17 @@ export function TaskList() {
   const [newTaskTitle, setNewTaskTitle] = useState('');
 
   function handleCreateNewTask() {
-    if ( newTaskTitle !== '' ) {
-      const generatedId = Math.floor(Math.random() * (100000 - 1 + 1) + 1);
-      const newTask: Task = {
-        id: generatedId,
-        title: newTaskTitle,
-        isComplete: false
-      }
-      setTasks(prev => [...prev, newTask]);
+    if ( !newTaskTitle ) return
+
+    const generatedId = Math.floor(Math.random() * (100000 - 1 + 1) + 1);
+    const newTask: Task = {
+      id: generatedId,
+      title: newTaskTitle,
+      isComplete: false
     }
+    
+    setTasks(prev => [...prev, newTask]);
+    setNewTaskTitle('')
   }
 
   function handleToggleTaskCompletion(id: number) {
